@@ -4,16 +4,18 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/siteConfig";
 
+type MeetOurDogId = (typeof siteConfig.meetOurDogs)[number]["id"];
+
 export function MeetOurDogsSection() {
   const dogs = siteConfig.meetOurDogs;
-  const [activeId, setActiveId] = useState(dogs[0]?.id ?? "");
+  const [activeId, setActiveId] = useState<MeetOurDogId>(dogs[0].id);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const activeDog = dogs.find((dog) => dog.id === activeId) ?? dogs[0];
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !activeDog) return;
+    if (!video) return;
 
     video.load();
     const playPromise = video.play();
@@ -21,10 +23,6 @@ export function MeetOurDogsSection() {
       playPromise.catch(() => {});
     }
   }, [activeDog]);
-
-  if (!activeDog) {
-    return null;
-  }
 
   return (
     <section

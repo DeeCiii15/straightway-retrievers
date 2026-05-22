@@ -38,21 +38,7 @@ type AboutPhotoCollageProps = {
 };
 
 export function AboutPhotoCollage({ className = "" }: AboutPhotoCollageProps) {
-  const photos = siteConfig.aboutPhotos;
-
-  if (photos.length === 0) {
-    return null;
-  }
-
-  const [main, ...supporting] = photos;
-
-  if (supporting.length === 0) {
-    return (
-      <div className={className}>
-        <PhotoFrame photo={main} priority className="min-h-[18rem] sm:min-h-[22rem]" />
-      </div>
-    );
-  }
+  const [main, ...supporting] = siteConfig.aboutPhotos;
 
   return (
     <div
