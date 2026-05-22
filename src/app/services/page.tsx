@@ -30,11 +30,11 @@ const programs = [
 
 export default function ServicesPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
-      <p className="text-sm font-semibold uppercase tracking-widest text-[var(--color-accent)]">
+    <div className="mx-auto max-w-5xl px-4 pb-12 pt-24 sm:px-6 sm:pb-16 sm:pt-28">
+      <p className="text-base font-semibold uppercase tracking-widest text-[var(--color-accent)]">
         Programs
       </p>
-      <h1 className="mt-2 font-[family-name:var(--font-display)] text-3xl font-semibold text-[var(--color-primary)] sm:text-4xl">
+      <h1 className="mt-2 font-[family-name:var(--font-display)] text-4xl font-semibold text-[var(--color-primary)] sm:text-5xl">
         Services
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-[var(--color-muted)]">

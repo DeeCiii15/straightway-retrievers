@@ -1,97 +1,175 @@
+import Image from "next/image";
 import Link from "next/link";
+import { AboutPhotoCollage } from "./components/AboutPhotoCollage";
+import { MeetOurDogsSection } from "./components/MeetOurDogsSection";
+import { WhatWeDoSection } from "./components/WhatWeDoSection";
 import { siteConfig } from "@/lib/siteConfig";
 
 export default function Home() {
   return (
     <div>
-      <section className="relative overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-primary)] text-[var(--color-primary-fg)]">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.12]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, var(--color-accent-soft), transparent 45%), radial-gradient(circle at 80% 0%, #fff, transparent 35%)",
-          }}
+      <section
+        id="hero"
+        className="relative min-h-[min(88vh,52rem)] w-full overflow-hidden border-b border-[var(--color-border)]"
+      >
+        <Image
+          src={siteConfig.heroImage}
+          alt={siteConfig.heroImageAlt}
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover object-[38%_56%] sm:object-[40%_58%]"
         />
-        <div className="relative mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-primary-fg-muted)]">
-            Retriever training
-          </p>
-          <h1 className="mt-4 max-w-2xl font-[family-name:var(--font-display)] text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            Clear standards. Calm dogs. Confident handlers.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-primary-fg-muted)]">
-            {siteConfig.tagline}
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/92 via-[var(--color-primary)]/75 to-[var(--color-primary)]/35 sm:via-[var(--color-primary)]/65 sm:to-[var(--color-primary)]/25"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto flex min-h-[min(88vh,52rem)] max-w-5xl flex-col justify-center px-4 py-20 text-[var(--color-primary-fg)] sm:px-6 sm:py-24">
+          <div className="w-full max-w-xl -translate-x-3 -translate-y-12 sm:-translate-x-5 sm:-translate-y-16 lg:-translate-x-6 lg:-translate-y-20">
+            <h1 className="max-w-lg text-balance font-[family-name:var(--font-display)] text-[clamp(1.75rem,5vw,3.75rem)] font-semibold leading-[1.08] tracking-tight drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)] sm:whitespace-nowrap">
+              {siteConfig.heroHeadline}
+            </h1>
+            <div
+              className="mt-5 h-px w-20 bg-gradient-to-r from-[var(--color-accent)] to-transparent"
+              aria-hidden
+            />
+            <p className="mt-6 whitespace-nowrap font-[family-name:var(--font-display)] text-[clamp(1rem,2.8vw,1.75rem)] font-medium leading-snug text-[var(--color-primary-fg-muted)] drop-shadow-[0_1px_10px_rgba(0,0,0,0.4)]">
+              {siteConfig.heroTagline}
+            </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-[var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-[var(--color-primary)] shadow-sm transition hover:bg-[var(--color-accent-soft)]"
+              className="mt-8 inline-flex w-fit items-center justify-center rounded-md bg-[var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-[var(--color-primary)] shadow-sm transition hover:bg-[var(--color-accent-soft)] sm:mt-10"
             >
-              Book a consult
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center rounded-md border border-white/25 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              View programs
+              Contact Us
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
-        <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[var(--color-primary)] sm:text-3xl">
-          What we focus on
-        </h2>
-        <p className="mt-3 max-w-2xl text-[var(--color-muted)]">
-          Training that respects the dog—steady progress, fair expectations, and skills that hold up in the field and at home.
-        </p>
-        <ul className="mt-10 grid gap-6 sm:grid-cols-3">
-          {[
-            {
-              title: "Foundations",
-              body: "Leash manners, place, recall, and crate routines that make advanced work possible.",
-            },
-            {
-              title: "Steadiness & marks",
-              body: "Line manners, patience at the line, marking fundamentals, and controlled retrieves.",
-            },
-            {
-              title: "Handler coaching",
-              body: "You learn timing, body language, and how to maintain standards between sessions.",
-            },
-          ].map((item) => (
-            <li
-              key={item.title}
-              className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm"
-            >
-              <h3 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-primary)]">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{item.body}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <section
+        id="about"
+        className="relative scroll-mt-[5.5rem] overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-canvas)] py-20 sm:py-28"
+      >
+        <div
+          className="pointer-events-none absolute -right-24 top-16 size-72 rounded-full bg-[var(--color-accent-soft)]/30 blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -left-16 bottom-8 size-56 rounded-full bg-[var(--color-muted-bg)] blur-2xl"
+          aria-hidden
+        />
 
-      <section className="border-y border-[var(--color-border)] bg-[var(--color-surface)] py-16 sm:py-20">
-        <div className="mx-auto flex max-w-5xl flex-col items-start gap-8 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <div>
-            <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-[var(--color-primary)]">
-              Ready to get on the same page as your dog?
-            </h2>
-            <p className="mt-2 max-w-xl text-[var(--color-muted)]">
-              Tell us about your dog, your goals, and your timeline—we will recommend a path forward.
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl lg:max-w-3xl">
+            <p className="text-base font-medium tracking-wide text-[var(--color-accent)]">
+              Who We are
             </p>
+            <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl font-medium leading-[1.12] text-[var(--color-primary)] sm:text-6xl lg:text-[3.25rem]">
+              {siteConfig.aboutHeading}
+            </h2>
+            <div
+              className="mt-6 h-px w-28 bg-gradient-to-r from-[var(--color-accent)]/80 to-transparent"
+              aria-hidden
+            />
           </div>
-          <Link
-            href="/contact"
-            className="inline-flex shrink-0 items-center justify-center rounded-md bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-[var(--color-primary-fg)] transition hover:bg-[var(--color-primary-hover)]"
-          >
-            Start a conversation
-          </Link>
+
+          <div className="mt-12 flex flex-col gap-10 lg:mt-16 lg:flex-row lg:items-center lg:gap-14 xl:gap-20">
+            <figure className="w-full min-w-0 lg:w-[48%] lg:shrink-0 xl:w-[46%]">
+              <AboutPhotoCollage />
+            </figure>
+
+            <div className="relative flex-1 lg:pl-2 xl:pl-6">
+              <div
+                className="pointer-events-none absolute -left-2 top-6 hidden h-[calc(100%-3rem)] w-px bg-gradient-to-b from-[var(--color-accent)]/50 via-[var(--color-border)] to-transparent lg:block"
+                aria-hidden
+              />
+              <p className="text-lg leading-[1.85] text-[var(--color-muted)] sm:text-xl sm:leading-[1.85] lg:pl-8">
+                {siteConfig.aboutSummary}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
+
+      <section className="relative overflow-hidden border-y border-[var(--color-border)] bg-[var(--color-primary)] py-10 sm:py-12">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 15% 50%, var(--color-accent-soft), transparent 45%), radial-gradient(circle at 85% 50%, rgba(255,255,255,0.08), transparent 40%)",
+          }}
+          aria-hidden
+        />
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent" aria-hidden />
+        <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+            <div className="flex gap-4 rounded-xl border border-white/15 bg-white/5 p-5 shadow-sm backdrop-blur-sm sm:p-6">
+              <span
+                className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent-soft)]"
+                aria-hidden
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 9.5 12 4l9 5.5M5 10v8.5h14V10M9 21v-6h6v6"
+                  />
+                </svg>
+              </span>
+              <div className="text-[var(--color-primary-fg)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent-soft)]">
+                  Locally rooted
+                </p>
+                <p className="mt-1 font-[family-name:var(--font-display)] text-xl font-semibold leading-snug sm:text-2xl">
+                  {siteConfig.familyOwned}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4 rounded-xl border border-white/15 bg-white/5 p-5 shadow-sm backdrop-blur-sm sm:p-6">
+              <span
+                className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent-soft)]"
+                aria-hidden
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"
+                  />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+              </span>
+              <div className="text-[var(--color-primary-fg)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent-soft)]">
+                  Service area
+                </p>
+                <p className="mt-1 text-base leading-snug text-[var(--color-primary-fg-muted)] sm:text-lg">
+                  {siteConfig.serviceArea}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <WhatWeDoSection />
+      <MeetOurDogsSection />
     </div>
   );
 }
