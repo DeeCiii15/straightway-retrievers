@@ -28,7 +28,7 @@ export function LocalTrustBand() {
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-10">
         {/* Mobile: thin banner — text blocks vertically centered with map */}
         <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-x-2 border-y border-[var(--color-dark)]/10 px-3 py-2.5 sm:hidden">
-          <div className="text-right">
+          <div className="translate-y-1.5 text-right">
             <p className="label-caps text-[0.6rem] leading-none">Locally rooted</p>
             <p className={`-mt-0.5 ${mobileBannerLineClass} truncate`}>{siteConfig.familyOwned}</p>
           </div>
@@ -37,7 +37,7 @@ export function LocalTrustBand() {
             <PeeDeeRegionIcon variant="onDark" className={mobileBannerIconClass} />
           </TrustBandIconPanel>
 
-          <div className="text-left">
+          <div className="translate-y-1.5 text-left">
             <p className="label-caps text-[0.6rem] leading-none">Service area</p>
             <p className={`-mt-0.5 ${mobileBannerLineClass}`}>{mobileServiceAreaLine}</p>
           </div>
