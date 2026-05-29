@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AboutPhotoCollage } from "./components/AboutPhotoCollage";
+import { LocalTrustBand } from "./components/LocalTrustBand";
 import { ContactTrigger } from "./components/ContactTrigger";
 import { MeetOurDogsSection } from "./components/MeetOurDogsSection";
 import { ScrollOnHash } from "./components/ScrollOnHash";
@@ -49,24 +50,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-reveal bg-[var(--color-sand)] py-6 sm:py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-          <div className="grid grid-cols-2 gap-3 sm:gap-0">
-            <div className="border-r border-[var(--color-dark)]/15 pr-3 sm:pr-10">
-              <p className="label-caps text-[0.65rem] sm:text-inherit">Locally rooted</p>
-              <p className="mt-1.5 text-balance font-[family-name:var(--font-display-face)] text-sm uppercase leading-snug tracking-wide text-[var(--color-dark)] sm:mt-2 sm:heading-section">
-                {siteConfig.familyOwned}
-              </p>
-            </div>
-            <div className="pl-3 sm:pl-10">
-              <p className="label-caps text-[0.65rem] sm:text-inherit">Service area</p>
-              <p className="mt-1.5 text-balance text-xs normal-case leading-snug tracking-normal text-[var(--color-muted)] sm:mt-2 sm:text-lg sm:leading-relaxed">
-                {siteConfig.serviceArea}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <LocalTrustBand />
 
       <section
         id="about"
