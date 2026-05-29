@@ -17,25 +17,42 @@ export function LocalTrustBand() {
       aria-label="Locally rooted and service area"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-4 sm:flex-row sm:items-center sm:gap-6 lg:max-w-6xl lg:gap-10">
-          {/* Text then flexible spacer — mirrors right column so map gaps match */}
-          <div className="grid w-full min-w-0 sm:flex-1 sm:grid-cols-[auto_1fr]">
-            <div className="text-center sm:translate-x-32 sm:text-right lg:translate-x-40">
-              <p className="label-caps max-sm:text-[0.65rem]">Locally rooted</p>
-              <p className={`${trustLineClass} max-sm:mt-1.5`}>{siteConfig.familyOwned}</p>
+        {/* Mobile: text stack left, map right */}
+        <div className="mx-auto flex w-full max-w-4xl items-center gap-4 sm:hidden">
+          <div className="flex min-w-0 flex-1 flex-col gap-5 text-left">
+            <div>
+              <p className="label-caps text-[0.65rem]">Locally rooted</p>
+              <p className={`${trustLineClass} mt-1.5`}>{siteConfig.familyOwned}</p>
             </div>
-            <div className="hidden sm:block" aria-hidden />
+            <div>
+              <p className="label-caps text-[0.65rem]">Service area</p>
+              <p className={`${trustLineClass} mt-1.5`}>{siteConfig.serviceArea}</p>
+            </div>
+          </div>
+          <TrustBandIconPanel>
+            <PeeDeeRegionIcon variant="onDark" className={iconSizeClass} />
+          </TrustBandIconPanel>
+        </div>
+
+        {/* Desktop */}
+        <div className="mx-auto hidden w-full max-w-4xl sm:flex sm:items-center sm:gap-6 lg:max-w-6xl lg:gap-10">
+          <div className="grid min-w-0 sm:flex-1 sm:grid-cols-[auto_1fr]">
+            <div className="text-right sm:translate-x-32 lg:translate-x-40">
+              <p className="label-caps">Locally rooted</p>
+              <p className={`${trustLineClass} mt-2`}>{siteConfig.familyOwned}</p>
+            </div>
+            <div aria-hidden />
           </div>
 
           <TrustBandIconPanel>
             <PeeDeeRegionIcon variant="onDark" className={iconSizeClass} />
           </TrustBandIconPanel>
 
-          <div className="grid w-full min-w-0 sm:flex-1 sm:grid-cols-[1fr_auto]">
-            <div className="hidden sm:block" aria-hidden />
-            <div className="text-center sm:text-left">
-              <p className="label-caps max-sm:text-[0.65rem]">Service area</p>
-              <p className={`${trustLineClass} max-sm:mt-1.5`}>{siteConfig.serviceArea}</p>
+          <div className="grid min-w-0 sm:flex-1 sm:grid-cols-[1fr_auto]">
+            <div aria-hidden />
+            <div className="text-left">
+              <p className="label-caps">Service area</p>
+              <p className={`${trustLineClass} mt-2`}>{siteConfig.serviceArea}</p>
             </div>
           </div>
         </div>
