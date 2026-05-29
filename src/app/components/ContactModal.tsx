@@ -87,9 +87,6 @@ export function ContactModal() {
           <p className="mt-2 text-base normal-case tracking-normal text-[var(--color-muted)]">
             {siteConfig.location}
           </p>
-          <p className="mt-1 text-sm normal-case tracking-normal text-[var(--color-muted)]">
-            {siteConfig.serviceArea}
-          </p>
         </div>
       </div>
     </div>

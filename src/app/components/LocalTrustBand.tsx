@@ -17,20 +17,24 @@ export function LocalTrustBand() {
       aria-label="Locally rooted and service area"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        {/* Mobile: text stack left, map right */}
-        <div className="mx-auto flex w-full max-w-4xl items-center gap-4 sm:hidden">
-          <div className="flex min-w-0 flex-1 flex-col gap-5 text-left">
-            <div>
-              <p className="label-caps text-[0.65rem]">Locally rooted</p>
-              <p className={`${trustLineClass} mt-1.5`}>{siteConfig.familyOwned}</p>
+        {/* Mobile: stacked copy left, map right */}
+        <div className="mx-auto flex w-full max-w-md items-center gap-5 sm:hidden">
+          <div className="flex min-w-0 flex-1 flex-col gap-0">
+            <div className="border-b border-[var(--color-dark)]/12 pb-4">
+              <p className="label-caps">Locally rooted</p>
+              <p className="mt-1.5 font-[family-name:var(--font-display-face)] text-base font-medium uppercase leading-snug tracking-wide text-[var(--color-dark)]">
+                {siteConfig.familyOwned}
+              </p>
             </div>
-            <div>
-              <p className="label-caps text-[0.65rem]">Service area</p>
-              <p className={`${trustLineClass} mt-1.5`}>{siteConfig.serviceArea}</p>
+            <div className="pt-4">
+              <p className="label-caps">Service area</p>
+              <p className="mt-1.5 text-sm normal-case leading-relaxed tracking-normal text-[var(--color-muted)]">
+                {siteConfig.serviceArea}
+              </p>
             </div>
           </div>
-          <TrustBandIconPanel>
-            <PeeDeeRegionIcon variant="onDark" className={iconSizeClass} />
+          <TrustBandIconPanel className="shrink-0">
+            <PeeDeeRegionIcon variant="onDark" className="h-10 w-12" />
           </TrustBandIconPanel>
         </div>
 
