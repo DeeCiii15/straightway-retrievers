@@ -16,6 +16,9 @@ const mobileBannerLineClass =
 /** Mobile banner only — shortened service area line */
 const mobileServiceAreaLine = "Florence, SC surrounding";
 
+/** Desktop (sm+) — service area without Pee Dee */
+const desktopServiceAreaLine = "Florence, SC and the surrounding areas";
+
 /**
  * Locally rooted + service area with a compact SC map accent between them.
  */
@@ -64,9 +67,9 @@ export function LocalTrustBand() {
 
           <div className="grid min-w-0 sm:flex-1 sm:grid-cols-[1fr_auto]">
             <div aria-hidden />
-            <div className="text-left">
+            <div className="text-left sm:-translate-x-8 lg:-translate-x-10">
               <p className="label-caps">Service area</p>
-              <p className={`${trustLineClass} mt-2`}>{siteConfig.serviceArea}</p>
+              <p className={`${trustLineClass} mt-2`}>{desktopServiceAreaLine}</p>
             </div>
           </div>
         </div>
