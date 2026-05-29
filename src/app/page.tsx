@@ -49,30 +49,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-reveal bg-[var(--color-sand)] py-8 sm:py-12">
+      <section className="section-reveal bg-[var(--color-sand)] py-6 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-          <div className="flex flex-col gap-3 sm:grid sm:grid-cols-2 sm:gap-0">
-            <div className="relative overflow-hidden rounded-sm border border-[var(--color-dark)]/10 bg-[var(--color-cream)]/70 px-5 py-6 shadow-sm shadow-[var(--color-dark)]/5 sm:rounded-none sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none sm:border-r sm:border-[var(--color-dark)]/15 sm:pr-10">
-              <span
-                className="absolute inset-x-0 top-0 h-0.5 bg-[var(--color-rust)] sm:hidden"
-                aria-hidden
-              />
-              <p className="label-caps text-[var(--color-rust)] sm:text-[var(--color-dark)]">
-                Locally rooted
-              </p>
-              <p className="mt-3 heading-section text-balance text-[var(--color-dark)] sm:mt-2 sm:text-3xl">
+          <div className="grid grid-cols-2 gap-3 sm:gap-0">
+            <div className="border-r border-[var(--color-dark)]/15 pr-3 sm:pr-10">
+              <p className="label-caps text-[0.65rem] sm:text-inherit">Locally rooted</p>
+              <p className="mt-1.5 text-balance font-[family-name:var(--font-display-face)] text-sm uppercase leading-snug tracking-wide text-[var(--color-dark)] sm:mt-2 sm:heading-section">
                 {siteConfig.familyOwned}
               </p>
             </div>
-            <div className="relative overflow-hidden rounded-sm border border-[var(--color-dark)]/10 bg-[var(--color-cream)]/70 px-5 py-6 shadow-sm shadow-[var(--color-dark)]/5 sm:rounded-none sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none sm:pl-10">
-              <span
-                className="absolute inset-x-0 top-0 h-0.5 bg-[var(--color-rust)] sm:hidden"
-                aria-hidden
-              />
-              <p className="label-caps text-[var(--color-rust)] sm:text-[var(--color-dark)]">
-                Service area
-              </p>
-              <p className="mt-3 font-[family-name:var(--font-display-face)] text-xl uppercase leading-snug tracking-wide text-[var(--color-dark)] sm:mt-2 sm:text-lg sm:normal-case sm:font-[family-name:var(--font-sans-body)] sm:tracking-normal sm:text-[var(--color-muted)]">
+            <div className="pl-3 sm:pl-10">
+              <p className="label-caps text-[0.65rem] sm:text-inherit">Service area</p>
+              <p className="mt-1.5 text-balance text-xs normal-case leading-snug tracking-normal text-[var(--color-muted)] sm:mt-2 sm:text-lg sm:leading-relaxed">
                 {siteConfig.serviceArea}
               </p>
             </div>
