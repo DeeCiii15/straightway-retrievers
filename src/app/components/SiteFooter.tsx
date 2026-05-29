@@ -1,17 +1,36 @@
 import { siteConfig } from "@/lib/siteConfig";
 
+const phoneDigits = siteConfig.phone.replace(/\D/g, "");
+
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-[var(--color-border)] bg-[var(--color-primary)] text-[var(--color-primary-fg)]">
-      <div className="mx-auto max-w-5xl px-4 py-10 text-center sm:px-6 sm:py-12">
-        <p className="font-[family-name:var(--font-display)] text-xl font-semibold sm:text-2xl">
-          {siteConfig.name}
-        </p>
-        <p className="mx-auto mt-2 text-sm tracking-wide text-[var(--color-primary-fg-muted)] sm:text-base">
-          {siteConfig.heroTagline}
-        </p>
+    <footer className="mt-auto bg-[var(--color-dark)] text-[var(--color-on-dark)]">
+      <div className="h-1 bg-[var(--color-rust)]" aria-hidden />
+      <div className="mx-auto max-w-7xl px-6 py-14 sm:px-10 sm:py-16">
+        <div className="mx-auto grid max-w-3xl items-center gap-8 sm:grid-cols-2 sm:gap-10 lg:max-w-4xl lg:gap-12">
+          <div className="text-center sm:text-left">
+            <p className="font-[family-name:var(--font-display-face)] text-xl uppercase tracking-widest sm:text-2xl">
+              {siteConfig.name}
+            </p>
+            <p className="mx-auto mt-2 max-w-sm text-sm normal-case leading-relaxed tracking-normal text-[var(--color-on-dark-muted)] sm:mx-0">
+              {siteConfig.heroTagline}
+            </p>
+          </div>
+
+          <div className="text-center sm:text-right">
+            <a
+              href={`tel:${phoneDigits}`}
+              className="inline-block rounded-sm font-[family-name:var(--font-display-face)] text-2xl uppercase tracking-wide transition hover:text-[var(--color-rust)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-rust)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-dark)]"
+            >
+              {siteConfig.phone}
+            </a>
+            <p className="mx-auto mt-2 max-w-xs text-sm normal-case leading-relaxed tracking-normal text-[var(--color-on-dark-muted)] sm:ml-auto sm:mr-0">
+              {siteConfig.location}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="border-t border-white/10 py-4 text-center text-xs text-[var(--color-primary-fg-muted)]">
+      <div className="border-t border-[var(--color-on-dark)]/10 py-4 text-center text-xs normal-case tracking-normal text-[var(--color-on-dark-muted)]">
         © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
       </div>
     </footer>

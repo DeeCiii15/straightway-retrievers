@@ -1,64 +1,75 @@
 import Image from "next/image";
+import Link from "next/link";
 import { siteConfig } from "@/lib/siteConfig";
 
 export function WhatWeDoSection() {
   return (
-    <section className="relative overflow-hidden border-y border-[var(--color-border)] bg-[var(--color-canvas)] py-20 sm:py-28">
-      <div
-        className="pointer-events-none absolute -right-20 top-24 size-80 rounded-full bg-[var(--color-accent-soft)]/25 blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -left-12 bottom-16 size-64 rounded-full bg-[var(--color-muted-bg)] blur-2xl"
-        aria-hidden
-      />
-
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl">
-          <p className="text-base font-medium tracking-wide text-[var(--color-accent)]">What we do</p>
-          <h2 className="mt-2 whitespace-nowrap font-[family-name:var(--font-display)] text-[clamp(2rem,4.5vw,3.5rem)] font-medium leading-tight text-[var(--color-primary)]">
+    <section className="section-reveal bg-[var(--color-dark)] py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="max-w-2xl">
+          <p className="label-caps text-[var(--color-rust)]">What we do</p>
+          <h2 className="heading-section mt-3 text-balance text-[clamp(1.35rem,4vw,3rem)] text-[var(--color-on-dark)] sm:whitespace-nowrap">
             {siteConfig.mission}
           </h2>
-          <div
-            className="mt-6 h-px w-28 bg-gradient-to-r from-[var(--color-accent)]/80 to-transparent"
-            aria-hidden
-          />
         </div>
 
-        <figure className="mt-10 max-w-3xl sm:mt-12 lg:mt-14">
-          <blockquote className="border-l-[3px] border-[var(--color-accent)]/70 py-1 pl-6 sm:pl-8">
-            <p className="font-[family-name:var(--font-display)] text-xl leading-relaxed text-[var(--color-primary)] sm:text-2xl sm:leading-relaxed">
-              {siteConfig.introQuote}
-            </p>
-          </blockquote>
-        </figure>
+        <blockquote className="mt-10 max-w-3xl border-l-4 border-[var(--color-rust)] pl-6 sm:mt-12 sm:pl-8">
+          <p className="text-xl normal-case leading-relaxed tracking-normal text-[var(--color-on-dark-muted)] sm:text-2xl">
+            &ldquo;{siteConfig.introQuote}&rdquo;
+          </p>
+        </blockquote>
 
-        <ul className="mt-12 grid gap-5 sm:mt-14 sm:gap-6 md:grid-cols-3 lg:mt-16">
-          {siteConfig.trainingPrograms.map((program) => (
-            <li
-              key={program.title}
-              className="group relative flex flex-col overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-[0_8px_30px_-12px_rgba(30,61,47,0.12)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-14px_rgba(30,61,47,0.18)]"
-            >
-              <div className="relative aspect-[5/3] overflow-hidden">
-                <Image
-                  src={program.image}
-                  alt={program.imageAlt}
-                  fill
-                  className="object-cover object-center transition duration-300 group-hover:scale-[1.03]"
-                  sizes="(min-width: 768px) 30vw, 90vw"
-                />
-              </div>
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
-                <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold text-[var(--color-primary)]">
-                  {program.title}
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
-                  {program.body}
-                </p>
-              </div>
-            </li>
-          ))}
+        <ul className="mt-14 space-y-0 sm:mt-20">
+          {siteConfig.trainingPrograms.map((program, index) => {
+            const imageFirst = index % 2 === 0;
+
+            return (
+              <li
+                key={program.title}
+                className={`grid border-t border-[var(--color-on-dark)]/15 md:grid-cols-2 ${
+                  index === siteConfig.trainingPrograms.length - 1
+                    ? "border-b"
+                    : ""
+                }`}
+              >
+                <div
+                  className={`group relative min-h-[16rem] overflow-hidden md:min-h-[20rem] ${
+                    imageFirst ? "md:order-1" : "md:order-2"
+                  }`}
+                >
+                  <Image
+                    src={program.image}
+                    alt={program.imageAlt}
+                    fill
+                    className="object-cover transition duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                  />
+                </div>
+                <div
+                  className={`flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 ${
+                    imageFirst ? "md:order-2" : "md:order-1"
+                  }`}
+                >
+                  <h3 className="text-2xl text-[var(--color-on-dark)] sm:text-3xl">
+                    {program.title}
+                  </h3>
+                  <p className="mt-4 max-w-md text-base normal-case leading-relaxed tracking-normal text-[var(--color-on-dark-muted)]">
+                    {program.body}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
         </ul>
+
+        <div className="mt-12 flex justify-center sm:mt-16">
+          <Link
+            href="/services"
+            className="btn-rust focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-on-dark)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-dark)]"
+          >
+            All programs
+          </Link>
+        </div>
       </div>
     </section>
   );

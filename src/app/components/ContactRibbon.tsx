@@ -1,6 +1,15 @@
+"use client";
+
+import { ContactTrigger } from "./ContactTrigger";
 import { siteConfig } from "@/lib/siteConfig";
 
 const phoneDigits = siteConfig.phone.replace(/\D/g, "");
+
+const ribbonClass =
+  "flex items-center gap-2.5 rounded-full bg-[var(--color-rust)] px-4 py-3.5 text-[var(--color-on-dark)] shadow-[0_4px_24px_rgba(0,0,0,0.28)] transition hover:bg-[var(--color-rust-hover)] hover:shadow-[0_6px_28px_rgba(0,0,0,0.32)] active:scale-[0.97] motion-reduce:active:scale-100 sm:gap-3 sm:px-5 sm:py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-dark)] focus-visible:ring-offset-2";
+
+const labelClass =
+  "font-[family-name:var(--font-display-face)] text-sm uppercase tracking-wider sm:text-base";
 
 function PhoneIcon() {
   return (
@@ -23,20 +32,24 @@ function PhoneIcon() {
 export function ContactRibbon() {
   return (
     <aside
-      className="fixed bottom-4 right-4 z-50 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] shadow-lg shadow-[var(--color-primary)]/12"
+      className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] right-4 z-50 sm:bottom-6 sm:right-6"
       aria-label="Call us"
     >
+      {/* Mobile: dial phone */}
       <a
         href={`tel:${phoneDigits}`}
-        className="inline-flex items-center gap-2.5 px-5 py-3.5 text-base font-semibold text-[var(--color-primary)] transition-colors hover:bg-[var(--color-muted-bg)] sm:gap-3 sm:px-6 sm:py-4"
+        className={`${ribbonClass} md:hidden`}
       >
         <PhoneIcon />
-        <span>Call</span>
-        <span className="text-[var(--color-muted)]" aria-hidden>
-          ·
-        </span>
-        <span>{siteConfig.phone}</span>
+        <span className={labelClass}>Call</span>
+        <span className="sr-only">{siteConfig.phone}</span>
       </a>
+
+      {/* Desktop: open contact modal */}
+      <ContactTrigger className={`${ribbonClass} hidden md:flex`}>
+        <PhoneIcon />
+        <span className={labelClass}>Call</span>
+      </ContactTrigger>
     </aside>
   );
 }

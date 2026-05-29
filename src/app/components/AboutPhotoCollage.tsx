@@ -3,11 +3,6 @@ import { siteConfig } from "@/lib/siteConfig";
 
 type AboutPhoto = (typeof siteConfig.aboutPhotos)[number];
 
-const supportingStyles = [
-  "min-h-[9rem] -rotate-3 sm:min-h-[10.5rem] lg:min-h-[12rem] lg:-rotate-[3.5deg]",
-  "min-h-[9rem] rotate-3 sm:min-h-[10.5rem] lg:min-h-[12rem] lg:rotate-[3.5deg]",
-] as const;
-
 function PhotoFrame({
   photo,
   priority,
@@ -19,15 +14,15 @@ function PhotoFrame({
 }) {
   return (
     <div
-      className={`relative min-h-0 overflow-hidden rounded-2xl shadow-[0_12px_40px_-12px_rgba(30,61,47,0.18)] ${className}`}
+      className={`relative min-h-0 overflow-hidden bg-[var(--color-sand)] ring-1 ring-[var(--color-dark)]/8 ${className}`}
     >
       <Image
         src={photo.src}
         alt={photo.alt}
         fill
         priority={priority}
-        className="object-cover object-center"
-        sizes="(min-width: 1024px) 28vw, 45vw"
+        className="object-cover object-[center_30%]"
+        sizes="(min-width: 1024px) 22vw, 45vw"
       />
     </div>
   );
@@ -42,23 +37,20 @@ export function AboutPhotoCollage({ className = "" }: AboutPhotoCollageProps) {
 
   return (
     <div
-      className={`flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:gap-7 ${className}`}
+      className={`mx-auto grid w-full max-w-[min(100%,22rem)] grid-cols-12 grid-rows-2 gap-2 sm:max-w-xl sm:gap-3 lg:max-w-2xl ${className}`}
     >
       <PhotoFrame
         photo={main}
         priority
-        className="min-h-[18rem] !rounded-3xl sm:min-h-[22rem] lg:min-h-[28rem] lg:flex-[1.35]"
+        className="col-span-7 row-span-2 min-h-[20rem] sm:min-h-[26rem] lg:min-h-[30rem]"
       />
-
-      <div className="flex flex-col justify-center gap-5 sm:gap-6 lg:flex-[1] lg:gap-7 lg:py-1">
-        {supporting.map((photo, index) => (
-          <PhotoFrame
-            key={photo.src}
-            photo={photo}
-            className={supportingStyles[index] ?? supportingStyles[0]}
-          />
-        ))}
-      </div>
+      {supporting.map((photo) => (
+        <PhotoFrame
+          key={photo.src}
+          photo={photo}
+          className="col-span-5 min-h-[10rem] sm:min-h-[12.5rem] lg:min-h-[14.5rem]"
+        />
+      ))}
     </div>
   );
 }
