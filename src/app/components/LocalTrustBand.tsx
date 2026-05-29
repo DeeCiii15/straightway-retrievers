@@ -9,6 +9,12 @@ const iconSizeClass = "h-9 w-11 sm:h-11 sm:w-[3.25rem]";
 
 const mobileBannerIconClass = "h-7 w-[2.125rem]";
 
+const mobileBannerLineClass =
+  "font-[family-name:var(--font-display-face)] text-[0.6875rem] font-medium uppercase leading-tight tracking-wide text-[var(--color-dark)]";
+
+/** Mobile banner only — shortened service area line */
+const mobileServiceAreaLine = "Florence, SC surrounding";
+
 /**
  * Locally rooted + service area with a compact SC map accent between them.
  */
@@ -19,25 +25,26 @@ export function LocalTrustBand() {
       aria-label="Locally rooted and service area"
     >
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-10">
-        {/* Mobile: thin banner strip */}
-        <div className="flex items-center gap-2 border-y border-[var(--color-dark)]/10 px-3 py-2.5 sm:hidden">
-          <div className="min-w-0 flex-1 text-right">
-            <p className="label-caps text-[0.6rem] leading-none">Locally rooted</p>
-            <p className="mt-0.5 truncate font-[family-name:var(--font-display-face)] text-[0.6875rem] font-medium uppercase leading-tight tracking-wide text-[var(--color-dark)]">
-              {siteConfig.familyOwned}
-            </p>
+        {/* Mobile: thin banner strip — labels and values share rows for alignment */}
+        <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] grid-rows-[auto_auto] items-center gap-x-2 gap-y-1 border-y border-[var(--color-dark)]/10 px-3 py-2.5 sm:hidden">
+          <p className="col-start-1 row-start-1 text-right label-caps text-[0.6rem] leading-none">
+            Locally rooted
+          </p>
+          <div className="col-start-2 row-span-2 row-start-1 flex items-center justify-center">
+            <TrustBandIconPanel className="shrink-0 px-1.5 py-1.5">
+              <PeeDeeRegionIcon variant="onDark" className={mobileBannerIconClass} />
+            </TrustBandIconPanel>
           </div>
+          <p className="col-start-3 row-start-1 text-left label-caps text-[0.6rem] leading-none">
+            Service area
+          </p>
 
-          <TrustBandIconPanel className="shrink-0 px-1.5 py-1.5">
-            <PeeDeeRegionIcon variant="onDark" className={mobileBannerIconClass} />
-          </TrustBandIconPanel>
-
-          <div className="min-w-0 flex-1 text-left">
-            <p className="label-caps text-[0.6rem] leading-none">Service area</p>
-            <p className="mt-0.5 line-clamp-2 text-[0.6875rem] normal-case leading-snug tracking-normal text-[var(--color-muted)]">
-              {siteConfig.serviceArea}
-            </p>
-          </div>
+          <p className={`col-start-1 row-start-2 text-right ${mobileBannerLineClass} truncate`}>
+            {siteConfig.familyOwned}
+          </p>
+          <p className={`col-start-3 row-start-2 text-left ${mobileBannerLineClass} leading-tight`}>
+            {mobileServiceAreaLine}
+          </p>
         </div>
 
         {/* Desktop */}
