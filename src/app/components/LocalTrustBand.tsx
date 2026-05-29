@@ -26,26 +26,21 @@ export function LocalTrustBand() {
       aria-label="Locally rooted and service area"
     >
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-10">
-        {/* Mobile: thin banner strip — labels and values share rows for alignment */}
-        <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] grid-rows-[auto_auto] items-start gap-x-2 gap-y-0 border-y border-[var(--color-dark)]/10 px-3 py-2.5 sm:hidden">
-          <p className="col-start-1 row-start-1 text-right label-caps text-[0.6rem] leading-none">
-            Locally rooted
-          </p>
-          <div className="col-start-2 row-span-2 row-start-1 flex items-center justify-center">
-            <TrustBandIconPanel className="shrink-0 px-1.5 py-1.5">
-              <PeeDeeRegionIcon variant="onDark" className={mobileBannerIconClass} />
-            </TrustBandIconPanel>
+        {/* Mobile: thin banner — text blocks vertically centered with map */}
+        <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-x-2 border-y border-[var(--color-dark)]/10 px-3 py-2.5 sm:hidden">
+          <div className="text-right">
+            <p className="label-caps text-[0.6rem] leading-none">Locally rooted</p>
+            <p className={`-mt-0.5 ${mobileBannerLineClass} truncate`}>{siteConfig.familyOwned}</p>
           </div>
-          <p className="col-start-3 row-start-1 text-left label-caps text-[0.6rem] leading-none">
-            Service area
-          </p>
 
-          <p className={`col-start-1 row-start-2 -mt-0.5 text-right ${mobileBannerLineClass} truncate`}>
-            {siteConfig.familyOwned}
-          </p>
-          <p className={`col-start-3 row-start-2 -mt-0.5 text-left ${mobileBannerLineClass}`}>
-            {mobileServiceAreaLine}
-          </p>
+          <TrustBandIconPanel className="shrink-0 px-1.5 py-1.5">
+            <PeeDeeRegionIcon variant="onDark" className={mobileBannerIconClass} />
+          </TrustBandIconPanel>
+
+          <div className="text-left">
+            <p className="label-caps text-[0.6rem] leading-none">Service area</p>
+            <p className={`-mt-0.5 ${mobileBannerLineClass}`}>{mobileServiceAreaLine}</p>
+          </div>
         </div>
 
         {/* Desktop */}
